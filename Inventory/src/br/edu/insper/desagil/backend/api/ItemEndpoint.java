@@ -41,4 +41,32 @@ public class ItemEndpoint extends Endpoint<Item>{
 	    return body;
 	}
 	
+	@Override
+	public Map<String, String> put(Map<String, String> args, Item item) throws APIException {
+		ItemDAO dao = new ItemDAO();
+	    Date date;
+	    try {
+	        date = dao.update(item);
+	    } catch (DBException exception) {
+	        return null;
+	    }
+	    Map<String, String> body = new HashMap<>();
+	    body.put("date", date.toString());
+	    return body;
+	}
+	
+	@Override
+	public Map<String, String> delete(Map<String, String> args) throws APIException {
+		ItemDAO dao = new ItemDAO();
+	    Date date;
+	    try {
+	        date = dao.delete(args.get("codigo"));
+	    } catch (DBException exception) {
+	        return null;
+	    }
+	    Map<String, String> body = new HashMap<>();
+	    body.put("date", date.toString());
+	    return body;
+	}
+	
 }
