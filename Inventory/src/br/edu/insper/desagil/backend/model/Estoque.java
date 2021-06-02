@@ -15,7 +15,7 @@ public class Estoque {
 		boolean ad = true;
 		if (itens.isEmpty() == false) {
 			for (Item item: this.itens) {
-				if (item.getProduto().getCodigo() == addItem.getProduto().getCodigo()) {
+				if (item.getCodigo() == addItem.getCodigo()) {
 					item.aumentaQuantidade();
 					ad = false;
 					break;
